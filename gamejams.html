@@ -11,6 +11,16 @@
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 20px;
     }
+    .video-item { /* New class for each video container */
+      display: flex;
+      flex-direction: column; /* Stacks children vertically */
+      align-items: center; /* Centers content horizontally */
+      text-align: center; /* Centers text */
+    }
+    .video-item p { /* Style for the video labels */
+      margin-bottom: 10px; /* Space between text and video */
+      font-weight: bold; /* Make the label stand out */
+    }
     video {
       width: 100%;
       border-radius: 8px;
@@ -35,12 +45,30 @@
 
 <main>
   <section class="video-grid">
-    <video controls><source src="assets/videos/Mrlol.mp4" type="video/mp4"></video>
-    <video controls><source src="assets/videos/RobloxDiscs.mp4" type="video/mp4"></video>
-    <video controls><source src="assets/videos/GearboxPuzzle.mp4" type="video/mp4"></video>
-    <video controls><source src="assets/videos/TheRatsMaze.mp4" type="video/mp4"></video>
-    <video controls><source src="assets/videos/ColorvisionCorrection.mp4" type="video/mp4"></video>
-    <video controls><source src="assets/videos/Potion Seller.mp4" type="video/mp4"></video>
+    <div class="video-item">
+      <p>Mixed Reality (Quest 3) Meme Generation</p>
+      <video controls><source src="assets/videos/Mrlol.mp4" type="video/mp4"></video>
+    </div>
+    <div class="video-item">
+      <p>Roblox VR Discs of Tron</p>
+      <video controls><source src="assets/videos/RobloxDiscs.mp4" type="video/mp4"></video>
+    </div>
+    <div class="video-item">
+      <p>VR Gearbox Puzzle Prototype</p>
+      <video controls><source src="assets/videos/GearboxPuzzle.mp4" type="video/mp4"></video>
+    </div>
+    <div class="video-item">
+      <p>VR Rat Maze Prototype</p>
+      <video controls><source src="assets/videos/TheRatsMaze.mp4" type="video/mp4"></video>
+    </div>
+    <div class="video-item">
+      <p>Mixed Reality (Quest 3) Colorvision Correction</p>
+      <video controls><source src="assets/videos/ColorvisionCorrection.mp4" type="video/mp4"></video>
+    </div>
+    <div class="video-item">
+      <p>LLM + Stable Diffusion in Unity</p>
+      <video controls><source src="assets/videos/Potion Seller.mp4" type="video/mp4"></video>
+    </div>
   </section>
 </main>
 
