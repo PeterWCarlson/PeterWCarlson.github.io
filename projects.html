@@ -5,6 +5,110 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Projects | Peter Carlson</title>
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Styles for the main project sections (companies) */
+    .company-section {
+      margin-bottom: 40px; /* Space between company sections */
+    }
+
+    /* Styles for each individual project item */
+    .individual-project-item {
+      display: flex;
+      /* Align items to the top of their flex container.
+         This ensures the video/image and the text block align at their tops. */
+      align-items: flex-start;
+      margin-bottom: 20px; /* Space between individual projects */
+      /* Allows content to wrap to the next line if not enough horizontal space.
+         This means the text block will appear below the media if the screen is too narrow. */
+      flex-wrap: wrap;
+      padding: 10px 0; /* Add some padding for visual separation */
+      border-bottom: 1px solid #eee; /* Light separator line */
+      /* Offset from the company name: moves the project entries to the right. */
+      margin-left: 30px;
+    }
+
+    /* Last item in a company section should not have a bottom border */
+    .company-section .individual-project-item:last-of-type {
+      border-bottom: none;
+    }
+
+    /* Styles for embedded media (iframe or image) */
+    .individual-project-item iframe,
+    .individual-project-item img {
+      margin-right: 20px; /* Space between media and text */
+      flex-shrink: 0; /* Prevents media from shrinking */
+      border-radius: 8px; /* Rounded corners for media */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+      /* Ensure media takes full width on very small screens, up to its max size */
+      max-width: 100%;
+      height: auto; /* Maintain aspect ratio */
+    }
+
+    /* Styles for the text content next to the media */
+    .individual-project-item > div {
+      flex-grow: 1; /* Allows text content to take remaining space */
+      /* Adjust min-width to influence wrapping behavior.
+         If there's less than min-width available, the text div will wrap. */
+      min-width: 250px;
+      /* Ensures the text block doesn't become excessively wide when wrapping.
+         Subtracts media width and its margin from 100% to help with wrapping. */
+      max-width: calc(100% - 320px - 20px);
+    }
+
+    /* Adjust font size for project titles within individual items */
+    .individual-project-item h3 {
+      margin-top: 0;
+      margin-bottom: 5px;
+      font-size: 1.2em; /* Slightly smaller for individual projects */
+    }
+
+    /* Remove default list styling within project descriptions (if any were used there) */
+    .individual-project-item ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 5px;
+    }
+
+    .individual-project-item ul li {
+      margin-bottom: 3px;
+    }
+
+    /* Media queries for responsiveness */
+    @media (max-width: 768px) {
+      .individual-project-item {
+        margin-left: 0; /* Remove offset on small screens for better use of space */
+        /* On small screens, allow the items to center within their container
+           if they wrap and take up less than 100% width. */
+        justify-content: center;
+        text-align: center; /* Center text content when elements wrap */
+      }
+
+      .individual-project-item iframe,
+      .individual-project-item img {
+        margin-right: 0; /* Remove right margin when media wraps to its own line */
+        margin-bottom: 15px; /* Add space below media when it wraps */
+      }
+
+      .individual-project-item > div {
+        min-width: unset; /* Reset min-width for stacking behavior on small screens */
+        max-width: 100%; /* Allow text to take full width when it wraps */
+      }
+
+      /* Adjust text alignment for company description on mobile to keep it left-aligned */
+      .company-section > p {
+        text-align: left;
+      }
+    }
+
+    /* Further refine the breakpoint where text wraps below media, if needed */
+    @media (max-width: 600px) {
+      .individual-project-item > div {
+        /* When screens are very small, allow the text to take full width below the media */
+        flex-basis: 100%;
+        margin-top: 10px; /* Space between media and text when stacked */
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -22,75 +126,170 @@
 </nav>
 
 <main>
-  <section class="project-card">
+  <!-- Endeavor One Section -->
+  <section class="company-section">
     <h2>Endeavor One (2017 – 2025)</h2>
     <p>Employee #1. Built and led the Design team through multiple VR titles.</p>
-    <ul>
-      <li><strong><a href="https://www.youtube.com/watch?v=dadLtfngQH8" target="_blank">Batman: Arkham Shadow</a></strong> (Quest 3): Designed and prototyped a series of minigames and led the E1 Design team as they did more impactful work.</li>
-      <li><strong><a href="https://www.youtube.com/watch?v=qOs66S6zWKM" target="_blank">Iron Man VR</a></strong> (Quest 2): Assisted Camouflaj in porting their successful PSVR game to Quest2. I did level design, scripting, encounter rebalancing, narrative setup and tweaking, and bug fixes. Owned this work for 1/3rd of the game levels.</li>
-      <li><strong><a href="https://www.youtube.com/watch?v=HDcNZ_BgDTY" target="_blank">Arashi: Castles of Sin</a></strong>  (PSVR): In addition to leading the Design team, I did all of the Systems Design and implemented a lot of functionality in C#</li>
-      <li><strong><a href="DomeOfTheDead.mp4" target="_blank">Dome of the Dead</a></strong> (Vulcan HoloDome): Led Design, but also wrote all the AI movement and combat systems, built the enemy prefabs, built the animation graphs, set up the encounters, lots more.</li>
-<li><a href="https://www.youtube.com/watch?v=tFj6IQB76B4" target="_blank"><strong>Halo: Recruit</strong></a> (MS Mixed Reality):
-This app was a shooting gallery to demonstrate Windows MR. I designed,
-then created the art and game code for the playable portion of the demo.</li>
-    </ul>
+
+    <div class="individual-project-item">
+      <iframe width="320" height="180" src="https://www.youtube-nocookie.com/embed/dadLtfngQH8?si=SzBosGraAJgO2H3l" title="YouTube video player - Batman: Arkham Shadow" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div>
+        <h3><a href="https://www.youtube.com/watch?v=dadLtfngQH8" target="_blank">Batman: Arkham Shadow</a> (Quest 3)</h3>
+        <p>Designed and prototyped a series of minigames and led the E1 Design team as they did more impactful work.</p>
+      </div>
+    </div>
+
+    <div class="individual-project-item">
+      <iframe width="320" height="180" src="https://www.youtube-nocookie.com/embed/qOs66S6zWKM?si=LhokYGoVMU-U5Z1W" title="YouTube video player - Iron Man VR" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div>
+        <h3><a href="https://www.youtube.com/watch?v=qOs66S6zWKM" target="_blank">Iron Man VR</a> (Quest 2)</h3>
+        <p>Assisted Camouflaj in porting their successful PSVR game to Quest2. I did level design, scripting, encounter rebalancing, narrative setup and tweaking, and bug fixes. Owned this work for 1/3rd of the game levels.</p>
+      </div>
+    </div>
+
+    <div class="individual-project-item">
+      <iframe width="320" height="180" src="https://www.youtube-nocookie.com/embed/HDcNZ_BgDTY?si=LhokYGoVMU-U5Z1W" title="YouTube video player - Arashi: Castles of Sin" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div>
+        <h3><a href="https://www.youtube.com/watch?v=HDcNZ_BgDTY" target="_blank">Arashi: Castles of Sin</a> (PSVR)</h3>
+        <p>In addition to leading the Design team, I did all of the Systems Design and implemented a lot of functionality in C#</p>
+      </div>
+    </div>
+
+    <div class="individual-project-item">
+     <iframe width="320" height="180" src="assets/videos/DomeOfTheDead.mp4" title="Dome of the Dead" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div>
+        <h3><a href="assets/videos/DomeOfTheDead.mp4" target="_blank">Dome of the Dead</a> (Vulcan HoloDome)</h3>
+        <p>Led Design, but also wrote all the AI movement and combat systems, built the enemy prefabs, built the animation graphs, set up the encounters, lots more.</p>
+      </div>
+    </div>
+
+    <div class="individual-project-item">
+      <iframe width="320" height="180" src="https://www.youtube-nocookie.com/embed/tFj6IQB76B4?si=LhokYGoVMU-U5Z1W" title="YouTube video player - Halo: Recruit" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div>
+        <h3><a href="https://www.youtube.com/watch?v=tFj6IQB76B4" target="_blank">Halo: Recruit</a> (MS Mixed Reality)</h3>
+        <p>This app was a shooting gallery to demonstrate Windows MR. I designed, then created the art and game code for the playable portion of the demo.</p>
+      </div>
+    </div>
   </section>
 
-  <section class="project-card">
+  <!-- Microsoft Section -->
+  <section class="company-section">
     <h2>Microsoft (2012 – 2016)</h2>
-    <ul>
-        <li><strong>HoloLens Experiences</strong>: For each of these, I
-created paper designs and worked with the team to build and iterate. I
-also built scenes, laid out menus, wrote presentation scripts, and
-snuck in some C# here and there. With the exception of Minecraft, these
-were all done in Unity.
-    <ul>
-      <li><a href="https://www.youtube.com/watch?v=xgakdcEzVwg&amp;t=146s" target="_blank"><strong>Minecraft</strong>:</a> Worked on two demos,
-one which was <a href="https://www.youtube.com/watch?v=QRQv74J7oSk&amp;t=57s" target="_blank">smoke and mirrors</a> and one which was running actual
-Minecraft code. The first was at Hololens announce, the second was on
-stage at E3.</li>
-      <li><a href="https://www.youtube.com/watch?v=hDkEJ3P2q9M" target="_blank"><strong>Galaxy Explorer</strong></a>: We asked the
-community to suggest a project, which we then built in 6 weeks. We
-documented the process with videos and released the code and content as
-Open Source.</li>
-      <li><strong>Behind Closed Doors</strong>: MR explorations shown
-behind closed doors, including Halo, Ori and the Blind Forest, State of
-Decay, Star Wars, Pixar Battlesaurs, and Disney Infinity.</li>
-    </ul>
-  </li>
-  <li><a href="https://www.youtube.com/watch?v=90vnJ_cNKf0" target="_blank"><strong>Xbox Fitness</strong></a>: I defined our
-telemetry captures and used the data to redesign the UI. I worked with
-Bing Health and MS Band to get our products to play nicely together. I
-oversaw a video shoot for a Paul George NBA workout video. I worked
-with a third-party studio in Canada to do a mobile port. I also did
-random things like writing Perl scripts to analyze and re-balance our
-effort crediting system</li>
-  <li><a href="https://www.youtube.com/watch?v=vD1ehxtNODY" target="_blank"><strong>Project Spark</strong></a>: Designed tutorial
-and Kinect motion capture systems. Built two E3 showcase games</li>
-  <li><a href="https://www.youtube.com/watch?v=Dz7wLcd0XsY" target="_blank"><strong>Nike+ Kinect Training</strong></a>: Led design
-of DLC and Title Update (paper design)</li>
-  <li><a href="https://www.youtube.com/watch?v=HXpyeTvH8X0" target="_blank"><strong>Kinect PlayFit</strong></a>: Targeted overhaul
-of Kinect PlayFit to get it to a shippable state on a very short
-timeline.</li>
-    </ul>
+
+    <div class="individual-project-item">
+      <iframe width="320" height="180" src="https://www.youtube-nocookie.com/embed/xgakdcEzVwg?si=LhokYGoVMU-U5Z1W" title="YouTube video player - Minecraft HoloLens" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div>
+        <h3><a href="https://www.youtube.com/watch?v=xgakdcEzVwg&amp;t=146s" target="_blank">Minecraft</a></h3>
+        <p>Worked on two demos, one which was <a href="https://www.youtube.com/watch?v=QRQv74J7oSk&amp;t=57s" target="_blank">smoke and mirrors</a> and one which was running actual Minecraft code. The first was at Hololens announce, the second was on stage at E3.</p>
+      </div>
+    </div>
+
+    <div class="individual-project-item">
+      <iframe width="320" height="180" src="https://www.youtube-nocookie.com/embed/hDkEJ3P2q9M?si=LhokYGoVMU-U5Z1W&amp;start=29" title="YouTube video player - Galaxy Explorer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div>
+        <h3><a href="https://www.youtube.com/watch?v=hDkEJ3P2q9M" target="_blank">Galaxy Explorer</a></h3>
+        <p>We asked the community to suggest a project, which we then built in 6 weeks. We documented the process with videos and released the code and content as Open Source.</p>
+      </div>
+    </div>
+
+    <div class="individual-project-item">
+      <!-- No direct media link, keeping as text-only for consistency -->
+     <iframe width="320" height="180" src="https://www.youtube-nocookie.com/embed/4-m71PzPkpU?si=lbQKo2V8o2wkcz19" title="YouTube video player - Battlesaurs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div>
+        <h3>Behind Closed Doors</h3>
+        <p>MR explorations shown behind closed doors, including Halo, Ori and the Blind Forest, State of Decay, Star Wars, Pixar Battlesaurs, and Disney Infinity.</p>
+      </div>
+    </div>
+
+    <div class="individual-project-item">
+      <iframe width="320" height="180" src="https://www.youtube-nocookie.com/embed/90vnJ_cNKf0?si=LhokYGoVMU-U5Z1W" title="YouTube video player - Xbox Fitness" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div>
+        <h3><a href="https://www.youtube.com/watch?v=90vnJ_cNKf0" target="_blank">Xbox Fitness</a></h3>
+        <p>I defined our telemetry captures and used the data to redesign the UI. I worked with Bing Health and MS Band to get our products to play nicely together. I oversaw a video shoot for a Paul George NBA workout video. I worked with a third-party studio in Canada to do a mobile port. I also did random things like writing Perl scripts to analyze and re-balance our effort crediting system</p>
+      </div>
+    </div>
+
+    <div class="individual-project-item">
+<iframe width="320" height="180" src="https://www.youtube-nocookie.com/embed/JVFufSbf5qA?si=_GgoNfiI4eS60FKq&amp;start=18" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div>
+        <h3><a href="https://youtu.be/JVFufSbf5qA?feature=shared&t=18" target="_blank">Project Spark</a></h3>
+        <p>Designed tutorial and Kinect motion capture systems. Built two E3 showcase games</p>
+      </div>
+    </div>
+
+    <div class="individual-project-item">
+<iframe width="320" height="180" src="https://www.youtube-nocookie.com/embed/ygQl9moL96U?si=JmtrZqn7-zPjmlqn&amp;start=2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div>
+        <h3><a href="https://www.youtube.com/watch?v=Dz7wLcd0XsY" target="_blank">Nike+ Kinect Training</a></h3>
+        <p>Led design of DLC and Title Update (paper design)</p>
+      </div>
+    </div>
+
+    <div class="individual-project-item">
+      <iframe width="320" height="180" src="https://www.youtube-nocookie.com/embed/HXpyeTvH8X0?si=LhokYGoVMU-U5Z1W" title="YouTube video player - Kinect PlayFit" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div>
+        <h3><a href="https://www.youtube.com/watch?v=HXpyeTvH8X0" target="_blank">Kinect PlayFit</a></h3>
+        <p>Targeted overhaul of Kinect PlayFit to get it to a shippable state on a very short timeline.</p>
+      </div>
+    </div>
   </section>
 
-  <section class="project-card">
+  <!-- WB Games / Surreal Software Section -->
+  <section class="company-section">
     <h2>WB Games / Surreal Software (2004 – 2012)</h2>
-    <ul>
-      <li><strong><a href="https://www.youtube.com/watch?v=CRLglREYEDs" target="_blank">Shadow of Mordor</a></strong> – Early AI systems prototyping</li>
-      <li><strong><a href="https://www.youtube.com/watch?v=X2jiDNedOvE" target="_blank">The Suffering: Ties That Bind</a></strong> – Designed & tuned every monster, built boss scenarios</li>
-      <li><strong><a href="https://www.youtube.com/watch?v=goNgskOPmeI" target="_blank">This is Vegas</a></strong> – Worked with two programmers to develop a visual scripting language used across the studio.  Owned World Simulation and ran all of the AI strike teams</li>
-    </ul>
+
+    <div class="individual-project-item">
+      <iframe width="320" height="180" src="https://www.youtube-nocookie.com/embed/CRLglREYEDs?si=LhokYGoVMU-U5Z1W" title="YouTube video player - Shadow of Mordor" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div>
+        <h3><a href="https://www.youtube.com/watch?v=CRLglREYEDs" target="_blank">Shadow of Mordor</a></h3>
+        <p>Early AI systems prototyping</p>
+      </div>
+    </div>
+
+    <div class="individual-project-item">
+      <iframe width="320" height="180" src="https://www.youtube-nocookie.com/embed/X2jiDNedOvE?si=LhokYGoVMU-U5Z1W" title="YouTube video player - The Suffering: Ties That Bind" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div>
+        <h3><a href="https://www.youtube.com/watch?v=X2jiDNedOvE" target="_blank">The Suffering: Ties That Bind</a></h3>
+        <p>Designed & tuned every monster, built boss scenarios</p>
+      </div>
+    </div>
+
+    <div class="individual-project-item">
+      <iframe width="320" height="180" src="https://www.youtube-nocookie.com/embed/goNgskOPmeI?si=LhokYGoVMU-U5Z1W" title="YouTube video player - This is Vegas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div>
+        <h3><a href="https://www.youtube.com/watch?v=goNgskOPmeI" target="_blank">This is Vegas</a></h3>
+        <p>Worked with two programmers to develop a visual scripting language used across the studio. Owned World Simulation and ran all of the AI strike teams</p>
+      </div>
+    </div>
   </section>
 
-  <section class="project-card">
+  <!-- Early Career Section -->
+  <section class="company-section">
     <h2>Early Career</h2>
-    <ul>
-      <li><strong><a href="https://www.youtube.com/watch?v=rWc3FTplLyM" target="_blank">Unreal 2: XMP</a></strong> – Implemented physics-based multiplayer vehicles in UnrealScript/C++</li>
-      <li><strong><a href="https://youtu.be/IQkOcm1K5ms?t=154" target="_blank">Shark Tale</a></strong> – AI and stealth gameplay (roughly 1/3 of the game)</li>
-      <li><strong><a href="https://en.wikipedia.org/wiki/NetBeans" target="_blank">Sun Microsystems</a></strong> – QA leadership, pushed open-source adoption</li>
-    </ul>
+
+    <div class="individual-project-item">
+      <iframe width="320" height="180" src="https://www.youtube-nocookie.com/embed/rWc3FTplLyM?si=LhokYGoVMU-U5Z1W" title="YouTube video player - Unreal 2: XMP" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div>
+        <h3><a href="https://www.youtube.com/watch?v=rWc3FTplLyM" target="_blank">Unreal 2: XMP</a></h3>
+        <p>Implemented physics-based multiplayer vehicles in UnrealScript/C++</p>
+      </div>
+    </div>
+
+    <div class="individual-project-item">
+      <iframe width="320" height="180" src="https://www.youtube-nocookie.com/embed/IQkOcm1K5ms?si=LhokYGoVMU-U5Z1W" title="YouTube video player - Shark Tale" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div>
+        <h3><a href="https://youtu.be/IQkOcm1K5ms?t=154" target="_blank">Shark Tale</a></h3>
+        <p>AI and stealth gameplay (roughly 1/3 of the game)</p>
+      </div>
+    </div>
+
+    <div class="individual-project-item">
+      <img src="assets/images/Sun.png" alt="Placeholder image for Sun Microsystems">
+      <div>
+        <h3><a href="https://en.wikipedia.org/wiki/NetBeans" target="_blank">Sun Microsystems</a></h3>
+        <p>QA leadership, pushed open-source adoption</p>
+      </div>
+    </div>
   </section>
 </main>
 
