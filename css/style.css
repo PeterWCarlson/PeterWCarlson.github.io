@@ -1,48 +1,70 @@
 /* style.css */
 
 body {
-  font-family: 'Inter', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f9f9f9;
-  color: #2c3e50;
-  line-height: 1.6;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #2c3e50;
+    line-height: 1.6;
 }
 
 header {
-  background-color: #1a1a1a;
-  color: white;
-  padding: 40px 20px;
-  text-align: center;
+    color: white; /* Ensure text is white for good contrast */
+    padding: 40px 20px;
+    text-align: center;
+
+    background-image: url('../assets/images/dmt_capsule.jpg'); /* IMPORTANT: Adjust path if needed */
+    background-size: cover;
+    background-position: center;
+
+    min-height: 280px; /* Give the header a minimum height so the background image is visible */
+    display: flex; /* Use flexbox for centering content */
+    flex-direction: column; /* Stack h1 and p vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
 }
 
+header h1 {
+    font-size: 3.25em; /* Made h1 text significantly larger */
+    text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.95); /* More intense shadow: larger offsets, more blur, higher opacity */
+    margin: 10px 0 5px 0; /* Adjust margin for h1: top, right, bottom, left */
+}
+
+header p {
+    font-size: 1.75em; /* Made p text larger */
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.95); /* More intense shadow for p: higher opacity */
+    margin: 5px 0 10px 0; /* Adjust margin for p */
+}
+
+
 nav {
-  display: flex;
-  justify-content: center;
-  background-color: white;
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 nav a {
-  margin: 0 15px;
-  text-decoration: none;
-  color: #3498db;
-  font-weight: 600;
+    margin: 0 15px;
+    text-decoration: none;
+    color: #3498db;
+    font-weight: 600;
 }
 
 main {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
 }
 
 footer {
-  text-align: center;
-  padding: 20px;
-  background: #eee;
-  color: #555;
+    text-align: center;
+    padding: 20px;
+    background: #eee;
+    color: #555;
 }
